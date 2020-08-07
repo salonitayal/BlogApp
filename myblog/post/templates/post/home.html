@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sal's Blog </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"></a><i class="fa fa-angellist" style="font-size:48px;color:whitesmoke"></i></a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'index' %}"">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'portfolio_detail_page' %}">About Me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://twitter.com/salonitayal">Twitter</a>
+            </li>
+          </ul>
+        </div>
+        <a class="navbar-brand" href="#" style="color:whitesmoke;font-weight: 800; font-size: 50px;">Sal's Blog</a>
+      </nav>
+    
+    <div class="container bg-light">
+        {% for post in post.all %}
+        <a href="{% url 'post_detail' post.id %}"><h2>{{ post.title }}</h2></a>
+        <i class="fa fa-clock-o" aria-hidden="true">     {{ post.pub_date_pretty }}</i>
+        <br/>
+        <img src="{{ post.image.url }}" class="img-responsive center-block" style="max-width:40%;max-height:100%;"/>
+        <br/>
+        {{ post.summary }}
+        <br/>
+        <br/>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
+
